@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_android_project/models/category_model.dart';
 import 'package:flutter_android_project/models/popular_diets_models.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_emoji_feedback/flutter_emoji_feedback.dart';
 
 import '../models/diet_model.dart';
 
@@ -43,12 +44,31 @@ class _HomePageState extends State<HomePage> {
           dietSection(),
           SizedBox(height: 40),
           popularSection(),
+          SizedBox(height: 70),
+          emojiFeedback(),
           SizedBox(height: 40)
           ],
       ),
     );
   }
 
+  Column emojiFeedback() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        EmojiFeedback(
+          initialRating: 4,
+          animDuration: const Duration(milliseconds: 300),
+          curve: Curves.bounceIn,
+          inactiveElementScale: 0.5,
+          onChanged: (value) {
+          },
+          onChangeWaitForAnimation: true,
+          elementSize: 150,
+        ),
+      ],
+    );
+  }
   Column popularSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
